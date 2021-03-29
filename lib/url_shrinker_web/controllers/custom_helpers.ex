@@ -13,9 +13,10 @@ defmodule UrlShrinkerWeb.Controllers.CustomHelpers do
   Used in fallback controller and link controller
   """
   def link_created(conn, link) do
+    path = Routes.link_url(conn, :redirect_to_link, link.hash)
     conn
     |> put_status(:created)
-    |> put_resp_header("location", Routes.link_path(conn, :redirect_to_link, link.hash))
-    |> render("info.json", short_url: Routes.link_path(conn, :redirect_to_link, link.hash))
+    |> put_resp_header("location", path)
+    |> render("info.json", short_url: path)
   end
 end
