@@ -47,6 +47,11 @@ defmodule UrlShrinker.Links do
     |> Repo.get_by(hash: hash)
   end
 
+  def get_link_by_url(url) do
+    Link
+    |> Repo.get_by(url: url)
+  end
+
   @doc """
   Creates a link.
 

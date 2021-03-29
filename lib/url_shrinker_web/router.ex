@@ -7,6 +7,13 @@ defmodule UrlShrinkerWeb.Router do
 
   scope "/api", UrlShrinkerWeb do
     pipe_through :api
+
+    post "/urls/shorten", LinkController, :create
+  end
+
+  scope "/", UrlShrinkerWeb do
+    pipe_through :api
+    get "/:hash", LinkController, :redirect_to_link
   end
 
   # Enables LiveDashboard only for development
