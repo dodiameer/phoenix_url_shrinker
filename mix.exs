@@ -20,7 +20,7 @@ defmodule UrlShrinker.MixProject do
   def application do
     [
       mod: {UrlShrinker.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :con_cache],
     ]
   end
 
@@ -43,7 +43,8 @@ defmodule UrlShrinker.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:hash_generator, "~> 1.0.1"}
+      {:hash_generator, "~> 1.0.1"},
+      {:con_cache, "~> 1.0"}
     ]
   end
 
