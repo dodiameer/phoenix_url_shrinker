@@ -43,8 +43,11 @@ defmodule UrlShrinker.Links do
   Returns `nil` if link was not found
   """
   def get_link_by_hash(hash) do
-    Link
-    |> Repo.get_by(hash: hash)
+    ConCache.get_or_store(:link_cache, hash, fn ->
+      IO.puts("Getting link by hash: #{hash}")
+      Link
+      |> Repo.get_by(hash: hash)
+    end)
   end
 
   @doc """
@@ -53,8 +56,11 @@ defmodule UrlShrinker.Links do
   Returns `nil` if link was not found
   """
   def get_link_by_url(url) do
-    Link
-    |> Repo.get_by(url: url)
+    ConCache.get_or_store(:link_cache, url, fn ->
+      IO.puts("Getting link by url: #{url}")
+      Link
+      |> Repo.get_by(url: url)
+    end)
   end
 
   @doc """

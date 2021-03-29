@@ -14,9 +14,10 @@ defmodule UrlShrinker.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: UrlShrinker.PubSub},
       # Start the Endpoint (http/https)
-      UrlShrinkerWeb.Endpoint
+      UrlShrinkerWeb.Endpoint,
       # Start a worker by calling: UrlShrinker.Worker.start_link(arg)
-      # {UrlShrinker.Worker, arg}
+      # {UrlShrinker.Worker, arg},
+      {ConCache, name: :link_cache, ttl_check_interval: false},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
