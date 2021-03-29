@@ -1,5 +1,17 @@
 defmodule UrlShrinkerWeb.Controllers.CustomHelpers do
+  @moduledoc """
+  Custom helper controller
+
+  Do not use this in the main router.
+  Instead call these functions from your other controllers
+  """
   use UrlShrinkerWeb, :controller
+
+  @doc """
+  Link successfully created handler
+
+  Used in fallback controller and link controller
+  """
   def link_created(conn, link) do
     conn
     |> put_status(:created)
