@@ -9,7 +9,9 @@ defmodule UrlShrinkerWeb.FallbackController do
   alias UrlShrinkerWeb.Controllers.CustomHelpers
   alias UrlShrinker.Links
 
-  # This clause is an example of how to handle resources that cannot be found.
+  @doc """
+  Error handlers
+  """
   def call(conn, {:error, :not_found}) do
     conn
     |> put_status(:not_found)
