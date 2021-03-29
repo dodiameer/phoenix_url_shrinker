@@ -48,6 +48,16 @@ defmodule UrlShrinker.Links do
   end
 
   @doc """
+  Gets a single link by the provided URL
+
+  Returns `nil` if link was not found
+  """
+  def get_link_by_url(url) do
+    Link
+    |> Repo.get_by(url: url)
+  end
+
+  @doc """
   Creates a link.
 
   ## Examples
